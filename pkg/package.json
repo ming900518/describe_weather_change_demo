@@ -1,0 +1,15 @@
+{
+  "name": "describe-weather-change",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "describe_weather_change_bg.wasm",
+    "describe_weather_change.js",
+    "describe_weather_change.d.ts"
+  ],
+  "main": "describe_weather_change.js",
+  "types": "describe_weather_change.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

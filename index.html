@@ -1,0 +1,55 @@
+<!doctype html lang="zh-Hant">
+
+<head>
+    <title>Describe Weather Info Demo</title>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <h1>描述天氣狀態 WebAssembly Library Demo</h1>
+    <ul>
+        <li>
+            <span>今天</span>
+            <br>
+            <textarea id="today" name="today" rows="1" cols="60">{"high": 32, "low": 24, "feel": 34,"date": "2024-07-04"}</textarea>
+        </li>
+        <li>
+            <span>明天</span>
+            <br>
+            <textarea id="tomorrow" name="tomorrow" rows="1" cols="60">{"high": 36, "low": 26, "feel": 38, "date": "2024-07-05"}</textarea>
+        </li>
+    </ul>
+    <hr>
+    <button id="start">執行</button>
+    <hr>
+    <ul>
+        <li>
+            <span>結果</span>
+            <br>
+            <textarea id="result" name="result" rows="1" cols="60"></textarea>
+        </li>
+    </ul>
+
+    <script type="module">
+        import init, {describeWeatherChange} from './pkg/describe_weather_change.js';
+        async function start() {
+            await init();
+
+            try {
+                var today = JSON.parse(document.getElementById("today").value);
+                var tomorrow = JSON.parse(document.getElementById("tomorrow").value);
+                var result = describeWeatherChange(today, tomorrow);
+                document.getElementById("result").value = result;
+            } catch (e) {
+                alert(e)
+            }
+        }
+
+        document.getElementById("start").onclick = async function() {
+            await start();
+        }
+    </script>
+
+</body>
+
+</html>
